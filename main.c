@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <mylib.c>
+#include "mylib.c"
 int main() {
                char *str; int n;
        printf("Please enter the maximum size of the string:\n");
