@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
    typedef struct Product {
@@ -13,28 +13,28 @@
     }Node;
     
     Node* CreatEmpty (){
-     return NULL;
+     Node *head = NULL;
+     return head;
     }
     
-    int IsEmpty(Node *head){
+    int IsEmpty(Node *head){ int chk;
         if (head!=NULL){
-            printf("the list isn't Empty");
-            return 1;
+           head = NULL;
+            return chk=1;
         } 
         else {
-            printf("the list is Empty");
-            return 0;
+            return chk=0; 
         } 
     }
     
     Node* AddAtBiginning (Node *head){
         Node* NowNode;
         NowNode = (Node*)malloc(sizeof(Node));
-        printf("give the Product:");
+        printf("give the Product big:");
         scanf("%d%s%d",&NowNode -> Prod.ID, NowNode -> Prod.Name, &NowNode -> Prod.Price);
-        if (IsEmpty(head)==0){
-            NowNode -> next = NowNode;
+        if ((IsEmpty(head))==0){
             head = NowNode;
+            NowNode -> next = NowNode;
             return NowNode;
         }
         else{
@@ -44,15 +44,16 @@
                 temp = temp -> next;
             }
             temp -> next = NowNode;
+            head = NowNode;
             return NowNode;
         }
         
     } 
     Node* AddAtEnd(Node *head){
-      struct Node* NowNode = (struct Node*)malloc(sizeof(struct Node));
-      printf("give the Product:");
+      struct Node* NowNode = (Node*)malloc(sizeof(struct Node));
+      printf("give the Product end:");
       scanf("%d%s%d",&NowNode -> Prod.ID, NowNode -> Prod.Name, &NowNode -> Prod.Price);
-      if(IsEmpty(head)==0){
+      if((IsEmpty(head))==0){
           NowNode -> next = NowNode;
           head = NowNode;
       }
@@ -62,9 +63,9 @@
               temp = temp -> next;
           }
           temp -> next = NowNode;
-          NowNode -> next = head
+          NowNode -> next = head;
       }
-      
+      return NowNode;
     }
     void DisPlayList(Node *head) {
 
@@ -75,13 +76,16 @@
     else{
     Node *temp = head;
     do {
-        printf("%d %s %d\n", temp->Prod.ID,temp->Prod.Name,temp->Prod.Price);
+        printf("Product ID : %d ,name : %s,Price : %d\n", temp->Prod.ID,temp->Prod.Name,temp->Prod.Price);
         temp = temp->next;
     } while (temp != head);
     }   
     }
-int main (){ 
-    
-   
+int main (){ Node *head;
+     CreatEmpty();
+     IsEmpty(head);
+     AddAtBiginning(head);
+     AddAtEnd(head);
+     DisPlayList(head);
+     return 0;
 }
-
