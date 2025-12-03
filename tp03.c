@@ -13,29 +13,29 @@
     }Node;
     
     Node* CreatEmpty (){
-     Node *head = NULL;
-     return head;
+     return NULL;
     }
     
-    int IsEmpty(Node *head){ int chk;
+    int IsEmpty(Node *head){
         if (head!=NULL){
-           head = NULL;
-            return chk=1;
+            printf("is not empty\n");
+            return 1;
         } 
         else {
-            return chk=0; 
+            printf("is empty\n");
+            return 0; 
         } 
     }
     
     Node* AddAtBiginning (Node *head){
         Node* NowNode;
         NowNode = (Node*)malloc(sizeof(Node));
-        printf("give the Product big:");
+        printf("give the Product big\n:");
         scanf("%d%s%d",&NowNode -> Prod.ID, NowNode -> Prod.Name, &NowNode -> Prod.Price);
         if ((IsEmpty(head))==0){
             head = NowNode;
             NowNode -> next = NowNode;
-            return NowNode;
+            
         }
         else{
             NowNode -> next = head;
@@ -45,13 +45,12 @@
             }
             temp -> next = NowNode;
             head = NowNode;
-            return NowNode;
         }
-        
+         return head;
     } 
     Node* AddAtEnd(Node *head){
       struct Node* NowNode = (Node*)malloc(sizeof(struct Node));
-      printf("give the Product end:");
+      printf("give the Product end\n:");
       scanf("%d%s%d",&NowNode -> Prod.ID, NowNode -> Prod.Name, &NowNode -> Prod.Price);
       if((IsEmpty(head))==0){
           NowNode -> next = NowNode;
@@ -65,13 +64,11 @@
           temp -> next = NowNode;
           NowNode -> next = head;
       }
-      return NowNode;
+      return head;
     }
     void DisPlayList(Node *head) {
-
-    if (IsEmpty(head)==0) {
+        if (IsEmpty(head)==0) {
         printf("\nList is empty\n");
-        return;
     }
     else{
     Node *temp = head;
@@ -79,13 +76,22 @@
         printf("Product ID : %d ,name : %s,Price : %d\n", temp->Prod.ID,temp->Prod.Name,temp->Prod.Price);
         temp = temp->next;
     } while (temp != head);
-    }   
     }
-int main (){ Node *head;
-     CreatEmpty();
+    return;
+    }
+int main (){ Node *head =  CreatEmpty();
      IsEmpty(head);
+     head = AddAtBiginning(head);
+     AddAtEnd(head);
      AddAtBiginning(head);
      AddAtEnd(head);
+     AddAtEnd(head);
+     AddAtBiginning(head);
+     AddAtEnd(head);
+     AddAtEnd(head);
+     AddAtBiginning(head);
+     AddAtEnd(head);
+     IsEmpty(head);
      DisPlayList(head);
      return 0;
 }
