@@ -1,4 +1,4 @@
- #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
    typedef struct Product {
@@ -11,26 +11,28 @@
         Product Prod;
         struct Node *next;
     }Node;
-    
+    //------ creat an empty list
     Node* CreatEmpty (){
      return NULL;
     }
-    
-    int IsEmpty(Node *head){
+    //------ chek if the list is empty or not
+    int IsEmpty(Node *head){ 
         if (head!=NULL){
-            printf("is not empty\n");
+           //not 
             return 1;
         } 
         else {
-            printf("is empty\n");
+            
             return 0; 
         } 
-    }
-    
-    Node* AddAtBiginning (Node *head){
+        
+        } 
+        
+     //------ add a now node at the biginning
+    Node* AddAtBiginning (Node *head){ int t;
         Node* NowNode;
         NowNode = (Node*)malloc(sizeof(Node));
-        printf("give the Product big\n:");
+        printf("\ngive the Product that you wanna add at the biginning:");
         scanf("%d%s%d",&NowNode -> Prod.ID, NowNode -> Prod.Name, &NowNode -> Prod.Price);
         if ((IsEmpty(head))==0){
             head = NowNode;
@@ -48,9 +50,10 @@
         }
          return head;
     } 
-    Node* AddAtEnd(Node *head){
+    //------ add a now node at the end
+    Node* AddAtEnd(Node *head){ int t;
       struct Node* NowNode = (Node*)malloc(sizeof(struct Node));
-      printf("give the Product end\n:");
+      printf("\ngive the Product that you wanna add at the end:");
       scanf("%d%s%d",&NowNode -> Prod.ID, NowNode -> Prod.Name, &NowNode -> Prod.Price);
       if((IsEmpty(head))==0){
           NowNode -> next = NowNode;
@@ -66,8 +69,10 @@
       }
       return head;
     }
-    void DisPlayList(Node *head) {
-        if (IsEmpty(head)==0) {
+    //----- writing the list
+    void DisPlayList(Node *head) { int t;
+    IsEmpty(head);
+        if ((IsEmpty(head))==0) {
         printf("\nList is empty\n");
     }
     else{
@@ -79,19 +84,17 @@
     }
     return;
     }
-int main (){ Node *head =  CreatEmpty();
+    //------- testing my functing in main
+int main (){ int t; Node *head =  CreatEmpty();
      IsEmpty(head);
      head = AddAtBiginning(head);
      AddAtEnd(head);
      AddAtBiginning(head);
      AddAtEnd(head);
-     AddAtEnd(head);
-     AddAtBiginning(head);
-     AddAtEnd(head);
-     AddAtEnd(head);
+     IsEmpty(head);
      AddAtBiginning(head);
      AddAtEnd(head);
      IsEmpty(head);
      DisPlayList(head);
      return 0;
-}
+           }
